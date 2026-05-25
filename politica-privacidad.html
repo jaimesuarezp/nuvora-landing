@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvora | Política de Privacidad</title>
+    <meta name="description" content="Política de privacidad y de tratamiento de datos personales del sitio web oficial de Nuvora Health, S.L.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nuvora.es/politica-privacidad.html">
+    <meta property="og:title" content="Nuvora | Política de Privacidad">
+    <meta property="og:description" content="Política de privacidad y de tratamiento de datos personales del sitio web oficial de Nuvora Health, S.L.">
+    <meta property="og:image" content="https://nuvora.es/assets/nuvora-hero.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nuvora.es/politica-privacidad.html">
+    <meta name="twitter:title" content="Nuvora | Política de Privacidad">
+    <meta name="twitter:description" content="Política de privacidad y de tratamiento de datos personales del sitio web oficial de Nuvora Health, S.L.">
+    <meta name="twitter:image" content="https://nuvora.es/assets/nuvora-hero.png">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('nuvora-theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
+
+    <!-- Unified Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+
+    
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <nav>
+            <div class="container nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Nuvora Inicio">
+                    <img src="assets/logo.png" alt="Nuvora Logo">
+                </a>
+    
+                <div class="nav-links">
+                    <a href="usuarios.html" class="nav-link">Usuarios</a>
+                    <a href="empresas.html" class="nav-link">Empresas</a>
+                    <a href="privacidad.html" class="nav-link">Privacidad</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+    
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-btn" aria-label="Alternar modo oscuro/claro">
+                        <i data-lucide="moon" class="icon-moon"></i>
+                        <i data-lucide="sun" class="icon-sun"></i>
+                    </button>
+                    <a href="contacto.html" class="btn btn-primary">Únete a la lista de espera</a>
+                    <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <i data-lucide="menu" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            const themeBtn = document.getElementById('theme-btn');
+            const htmlElement = document.documentElement;
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('nuvora-theme', newTheme);
+            });
+
+            // Mobile Menu Toggle
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggleBtn.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('is-active');
+                menuToggleBtn.setAttribute('aria-expanded', isActive);
+                const menuIcon = document.getElementById('menu-icon');
+                if (isActive) {
+                    menuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // High Performance IntersectionObserver for animations
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.05 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(el => { observer.observe(el); });
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+        <main class="container legal-content">
+        <section class="section">
+            <div class="container legal-inner">
+                <h1 class="page-title">Política de Privacidad</h1>
+                <p class="legal-intro">
+                    Esta Política de Privacidad describe cómo recogemos, utilizamos y protegemos sus datos personales, garantizando el cumplimiento de la normativa vigente en materia de protección de datos.
+                </p>
+                
+                <h2>1. Responsable del tratamiento</h2>
+                <ul>
+                    <li><strong>Titular:</strong> Nuvora Health, S.L.</li>
+                    <li><strong>NIF/CIF:</strong> B22544225</li>
+                    <li><strong>Domicilio social:</strong> Parque Tecnológico de Fuerteventura, Antiguo Aeropuerto de los Estancos s/n, 35612 Puerto del Rosario, Las Palmas</li>
+                    <li><strong>Correo electrónico para el ejercicio de derechos:</strong> <a class="link-brand" href="mailto:jaimesuarez@nuvora.es">jaimesuarez@nuvora.es</a></li>
+                </ul>
+
+                <h2>2. Finalidad del tratamiento</h2>
+                <p class="mb-sm">Los datos personales recogidos serán tratados de forma confidencial con las siguientes finalidades:</p>
+                <ul>
+                    <li>Gestionar consultas realizadas a través de la web.</li>
+                    <li>Prestar los servicios ofrecidos en la plataforma de Nuvora.</li>
+                    <li>Mejorar la experiencia del usuario y optimizar la plataforma.</li>
+                    <li>Enviar comunicaciones relacionadas con el servicio, siempre y cuando el usuario lo autorice de manera expresa.</li>
+                </ul>
+
+                <h2>3. Base legal</h2>
+                <p class="mb-sm">El tratamiento de los datos personales está amparado en las siguientes bases legales:</p>
+                <ul>
+                    <li><strong>Consentimiento del usuario:</strong> Para la gestión de consultas y el envío de comunicaciones comerciales.</li>
+                    <li><strong>Ejecución de un contrato o precontrato:</strong> Para la prestación de los servicios solicitados.</li>
+                    <li><strong>Cumplimiento de obligaciones legales:</strong> Para la atención a posibles requerimientos por parte de las autoridades competentes.</li>
+                </ul>
+
+                <h2>4. Conservación de los datos</h2>
+                <p>
+                    Los datos proporcionados se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la cual fueron recabados y para determinar las posibles responsabilidades que se pudieran derivar de dicha finalidad y del tratamiento de los datos, además de los periodos establecidos en la normativa de archivo y documentación obligatoria.
+                </p>
+
+                <h2>5. Destinatarios</h2>
+                <p>
+                    Con carácter general, no se comunicarán los datos personales a terceros, salvo obligación legal, o en aquellos casos en los que el usuario haya dado su consentimiento explícito para finalidades específicas de cesión de datos relacionadas con la investigación médica.
+                </p>
+
+                <h2>6. Derechos del usuario</h2>
+                <p class="mb-sm">El usuario podrá ejercer en cualquier momento sus derechos de:</p>
+                <ul>
+                    <li>Acceso a sus datos personales.</li>
+                    <li>Rectificación de datos inexactos o incompletos.</li>
+                    <li>Supresión de sus datos.</li>
+                    <li>Limitación del tratamiento.</li>
+                    <li>Oposición al tratamiento de sus datos.</li>
+                    <li>Portabilidad de los datos.</li>
+                </ul>
+                <p>
+                    Para el ejercicio de estos derechos, el usuario debe dirigirse por escrito al domicilio de Nuvora Health, S.L. o enviando un correo a <a class="link-brand" href="mailto:jaimesuarez@nuvora.es">jaimesuarez@nuvora.es</a>, acompañando una copia de su DNI o documento equivalente.
+                </p>
+
+                <h2>7. Seguridad de los datos</h2>
+                <p>
+                    Nuvora Health, S.L. ha adoptado los niveles de seguridad de protección de los datos personales legalmente requeridos, e instala todos los medios y medidas técnicas a su alcance para evitar la pérdida, mal uso, alteración, acceso no autorizado y robo de los datos personales facilitados.
+                </p>
+            </div>
+        </section>
+    </main>
+
+        <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="Nuvora Logo">
+                <p>
+                    Salud digital para pacientes crónicos, cuidadores y entidades que buscan una gestión de la medicación más clara, segura y humana.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="empresas.html">Empresas</a>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; <script>document.write(new Date().getFullYear())</script> Nuvora Health. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>

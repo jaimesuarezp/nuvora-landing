@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvora | Política de Cookies</title>
+    <meta name="description" content="Política de cookies y tecnologías de seguimiento del sitio web oficial de Nuvora Health, S.L.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nuvora.es/politica-cookies.html">
+    <meta property="og:title" content="Nuvora | Política de Cookies">
+    <meta property="og:description" content="Política de cookies y tecnologías de seguimiento del sitio web oficial de Nuvora Health, S.L.">
+    <meta property="og:image" content="https://nuvora.es/assets/nuvora-hero.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nuvora.es/politica-cookies.html">
+    <meta name="twitter:title" content="Nuvora | Política de Cookies">
+    <meta name="twitter:description" content="Política de cookies y tecnologías de seguimiento del sitio web oficial de Nuvora Health, S.L.">
+    <meta name="twitter:image" content="https://nuvora.es/assets/nuvora-hero.png">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('nuvora-theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
+
+    <!-- Unified Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+
+    
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <nav>
+            <div class="container nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Nuvora Inicio">
+                    <img src="assets/logo.png" alt="Nuvora Logo">
+                </a>
+    
+                <div class="nav-links">
+                    <a href="usuarios.html" class="nav-link">Usuarios</a>
+                    <a href="empresas.html" class="nav-link">Empresas</a>
+                    <a href="privacidad.html" class="nav-link">Privacidad</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+    
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-btn" aria-label="Alternar modo oscuro/claro">
+                        <i data-lucide="moon" class="icon-moon"></i>
+                        <i data-lucide="sun" class="icon-sun"></i>
+                    </button>
+                    <a href="contacto.html" class="btn btn-primary">Únete a la lista de espera</a>
+                    <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <i data-lucide="menu" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            const themeBtn = document.getElementById('theme-btn');
+            const htmlElement = document.documentElement;
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('nuvora-theme', newTheme);
+            });
+
+            // Mobile Menu Toggle
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggleBtn.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('is-active');
+                menuToggleBtn.setAttribute('aria-expanded', isActive);
+                const menuIcon = document.getElementById('menu-icon');
+                if (isActive) {
+                    menuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // High Performance IntersectionObserver for animations
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.05 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(el => { observer.observe(el); });
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+        <main class="container legal-content">
+        <section class="section">
+            <div class="container legal-inner">
+                <h1 class="page-title">Política de Cookies</h1>
+                <p class="legal-intro">
+                    Nuvora Health, S.L. utiliza cookies propias y de terceros con el fin de mejorar nuestros servicios, adaptar el contenido y facilitar su navegación. A continuación, explicamos de forma clara qué son y cómo puede gestionarlas.
+                </p>
+                
+                <h2>1. Qué son las cookies</h2>
+                <p>
+                    Las cookies son pequeños archivos de texto que se descargan en el dispositivo del usuario (ordenador, tablet, smartphone) al acceder a determinadas páginas web. Las cookies permiten a una web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo y, dependiendo de la información que contengan y de la forma en que utilice su equipo, pueden utilizarse para reconocer al usuario.
+                </p>
+
+                <h2>2. Qué tipos de cookies puede utilizar esta web</h2>
+                <p class="mb-sm">El sitio web de Nuvora puede utilizar los siguientes tipos de cookies:</p>
+                <ul>
+                    <li><strong>Cookies técnicas:</strong> Son aquellas que permiten al usuario la navegación a través del sitio web y la utilización de las diferentes opciones o servicios que en ella existen, como, por ejemplo, controlar el tráfico y la comunicación de datos, identificar la sesión o acceder a partes de acceso restringido.</li>
+                    <li><strong>Cookies de personalización:</strong> Son aquellas que permiten al usuario acceder al servicio con algunas características de carácter general predefinidas en función de una serie de criterios en el terminal del usuario, como el idioma o el tipo de navegador a través del cual se accede.</li>
+                    <li><strong>Cookies de análisis:</strong> Son aquellas que, bien tratadas por nosotros o por terceros, nos permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen del servicio ofertado.</li>
+                </ul>
+
+                <h2>3. Consentimiento del usuario</h2>
+                <p>
+                    Al entrar en nuestra web, se muestra un aviso de cookies en el que el usuario podrá aceptar, rechazar o configurar qué tipos de cookies desea instalar en su dispositivo. El uso de cookies técnicas es necesario para el funcionamiento básico de la web y no requiere de consentimiento expreso. Para las cookies de personalización y análisis, se requerirá la aceptación afirmativa y explícita por parte del usuario.
+                </p>
+
+                <h2>4. Cómo configurar, rechazar o eliminar cookies</h2>
+                <p class="mb-sm">
+                    Además de utilizar nuestro panel de configuración, usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador:
+                </p>
+                <ul>
+                    <li><strong>Google Chrome:</strong> Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.</li>
+                    <li><strong>Mozilla Firefox:</strong> Opciones > Privacidad & Seguridad > Cookies y datos del sitio.</li>
+                    <li><strong>Safari:</strong> Preferencias > Privacidad > Bloquear todas las cookies.</li>
+                    <li><strong>Microsoft Edge:</strong> Configuración > Cookies y permisos del sitio > Administrar y eliminar cookies y datos del sitio.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+        <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="Nuvora Logo">
+                <p>
+                    Salud digital para pacientes crónicos, cuidadores y entidades que buscan una gestión de la medicación más clara, segura y humana.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="empresas.html">Empresas</a>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; <script>document.write(new Date().getFullYear())</script> Nuvora Health. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>

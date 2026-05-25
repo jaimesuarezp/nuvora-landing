@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvora | Gestión Segura de la Medicación</title>
+    <meta name="description" content="Nuvora es una app para pacientes crónicos y personas con polimedicación que ayuda a gestionar la medicación, mejorar la adherencia terapéutica y detectar posibles interacciones farmacológicas.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nuvora.es/">
+    <meta property="og:title" content="Nuvora | Gestión Segura de la Medicación">
+    <meta property="og:description" content="Nuvora es una app para pacientes crónicos y personas con polimedicación que ayuda a gestionar la medicación, mejorar la adherencia terapéutica y detectar posibles interacciones farmacológicas.">
+    <meta property="og:image" content="https://nuvora.es/assets/nuvora-hero.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nuvora.es/">
+    <meta name="twitter:title" content="Nuvora | Gestión Segura de la Medicación">
+    <meta name="twitter:description" content="Nuvora es una app para pacientes crónicos y personas con polimedicación que ayuda a gestionar la medicación, mejorar la adherencia terapéutica y detectar posibles interacciones farmacológicas.">
+    <meta name="twitter:image" content="https://nuvora.es/assets/nuvora-hero.png">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Unified Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('nuvora-theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
+    
+    <!-- JSON-LD Structured Data for GEO/AI SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalOrganization",
+      "name": "Nuvora",
+      "url": "https://nuvora.es/",
+      "logo": "https://nuvora.es/assets/logo.png",
+      "description": "Plataforma de salud digital para pacientes crónicos y polimedicados, facilitando el control seguro de tratamientos y la adherencia médica.",
+      "award": [
+        "Empresa emergente certificada por ENISA",
+        "Startup más invertible en MentorDay 2023",
+        "Premio TCUE 2023-2024"
+      ],
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, Android, Web"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <nav>
+            <div class="container nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Nuvora Inicio">
+                    <img src="assets/logo.png" alt="Nuvora Logo">
+                </a>
+                
+                <div class="nav-links">
+                    <a href="usuarios.html" class="nav-link">Usuarios</a>
+                    <a href="empresas.html" class="nav-link">Empresas</a>
+                    <a href="privacidad.html" class="nav-link">Privacidad</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+    
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-btn" aria-label="Alternar modo oscuro/claro">
+                        <i data-lucide="moon" class="icon-moon"></i>
+                        <i data-lucide="sun" class="icon-sun"></i>
+                    </button>
+                    <a href="contacto.html" class="btn btn-primary">Únete a la lista de espera</a>
+                    <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <i data-lucide="menu" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-layout">
+            <div class="hero-content fade-in-up">
+                <p class="section-label">Salud digital para pacientes crónicos</p>
+                <h1>
+                    App para pacientes crónicos y <span class="text-gradient">polimedicados</span>
+                </h1>
+                <p>
+                    Nuvora te ayuda a gestionar tu medicación, mejorar la adherencia terapéutica y detectar posibles interacciones farmacológicas desde un solo lugar.
+                </p>
+                <div class="inline-actions">
+                    <a href="contacto.html" class="btn btn-primary">Únete a la lista de espera <i data-lucide="arrow-right"></i></a>
+                    <a href="#como-funciona" class="btn btn-outline min-w-180">
+                        Ver cómo funciona
+                    </a>
+                </div>
+                <p class="hero-note">Pensada para pacientes, cuidadores y familiares que necesitan más claridad y control en su tratamiento.</p>
+            </div>
+            <div class="hero-visual fade-in-up delay-2">
+                <img src="assets/nuvora-hero.png" alt="Mujer usando Nuvora en casa" class="img-rounded aspect-square">
+            </div>
+        </div>
+    </header>
+
+    <!-- BANDA DE CONFIANZA -->
+    <section class="trust-band fade-in-up">
+        <div class="container trust-row">
+            <div class="trust-item">
+                <img src="assets/Certificada-01.png" alt="Sello ENISA Certificada como Empresa Emergente" class="trust-logo">
+                <p class="trust-text">Empresa emergente certificada por ENISA</p>
+            </div>
+            <div class="trust-item">
+                <a class="trust-link" href="https://www.credential.net/cb6cb33d-0323-4824-b8be-b4ad3f740e12#acc.AapUD5RK" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/mentorday-logo.jpg" alt="MentorDay Logo" class="trust-logo">
+                    <div>
+                        <p class="trust-text">Startup más invertible en MentorDay</p>
+                        <p class="trust-credential">Ver credencial <i class="trust-credential-icon" data-lucide="external-link"></i></p>
+                    </div>
+                </a>
+            </div>
+            <div class="trust-item">
+                <img src="assets/tcue-logo.png" alt="TCUE Logo" class="trust-logo">
+                <p class="trust-text">Premio TCUE 2023-24</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            const themeBtn = document.getElementById('theme-btn');
+            const htmlElement = document.documentElement;
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('nuvora-theme', newTheme);
+            });
+
+            // Mobile Menu Toggle
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggleBtn.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('is-active');
+                menuToggleBtn.setAttribute('aria-expanded', isActive);
+                const menuIcon = document.getElementById('menu-icon');
+                if (isActive) {
+                    menuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // High Performance IntersectionObserver for animations
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.05 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(el => { observer.observe(el); });
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- SECTION: CÓMO FUNCIONA -->
+        <section id="como-funciona" class="section padding-y-lg">
+            <div class="container text-center fade-in-up max-w-900 mb-lg">
+                <h2 class="section-title">La tranquilidad de tener tu tratamiento bajo control</h2>
+                <p class="body-copy-lg">Vivir con una condición crónica o gestionar medicación múltiple no tiene por qué ser abrumador. Nuvora te aporta seguridad clínica, previene riesgos y protege tu información más sensible.</p>
+            </div>
+            <div class="container steps-grid fade-in-up">
+                <div class="step-card">
+                    <i data-lucide="list-checks"></i>
+                    <h4>Centraliza tu pauta médica</h4>
+                    <p>Registra todo tu plan de medicación en un solo lugar. Un historial claro, organizado y fácil de seguir, pensado para facilitar el día a día a pacientes y cuidadores.</p>
+                </div>
+                <div class="step-card">
+                    <i data-lucide="activity"></i>
+                    <h4>Prevención de interacciones</h4>
+                    <p>Añadimos una capa vital de seguridad clínica. Nuestro sistema analiza tu tratamiento para advertirte sobre posibles incompatibilidades entre distintos medicamentos.</p>
+                </div>
+                <div class="step-card">
+                    <i data-lucide="bell-ring"></i>
+                    <h4>Apoyo a la adherencia</h4>
+                    <p>Recibe recordatorios precisos y la asistencia necesaria para cumplir tu tratamiento sin errores. Convierte rutinas complejas en hábitos seguros y fáciles de seguir.</p>
+                </div>
+                <div class="step-card">
+                    <i data-lucide="shield-check"></i>
+                    <h4>Tus datos, tu decisión</h4>
+                    <p>Mejora tu salud con un sistema diseñado desde cero para proteger tu identidad. Tú mantienes el control absoluto sobre el nivel de privacidad de tu historial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PACIENTES Y CUIDADORES -->
+        <section id="pacientes" class="section bg-soft padding-y-lg">
+            <div class="container">
+                <div class="section-split mb-lg">
+                    <div class="fade-in-up">
+                        <h2 class="section-label">Para pacientes y cuidadores</h2>
+                        <h3 class="section-title">Más control para seguir tu tratamiento cada día</h3>
+                        <p>Nuvora centraliza la información de la medicación, facilita la adherencia terapéutica y ayuda a identificar posibles riesgos asociados a la polimedicación. Está diseñada para pacientes, familiares y cuidadores que necesitan una herramienta clara para organizar tratamientos complejos.</p>
+                    </div>
+                    <div class="fade-in-up flex-center">
+                        <img src="assets/nuvora-pacientes.png" alt="Cuidador ayudando a revisar medicación" class="img-rounded">
+                    </div>
+                </div>
+                
+                <div class="features-custom-grid fade-in-up">
+                    <div class="feature-card">
+                        <i data-lucide="check-circle"></i>
+                        <h4>Recordatorios y seguimiento</h4>
+                        <p>Mantén tu tratamiento más presente y reduce olvidos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i data-lucide="eye"></i>
+                        <h4>Visión más clara de la medicación</h4>
+                        <p>Consulta la información importante desde un solo lugar.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i data-lucide="users"></i>
+                        <h4>Apoyo para cuidadores</h4>
+                        <p>Facilita el seguimiento cuando el tratamiento no depende solo de una persona.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PRIVACIDAD Y RECOMPENSA -->
+        <section id="privacidad" class="section padding-y-lg">
+            <div class="container section-split alt">
+                <div class="fade-in-up">
+                    <h2 class="section-label">Privacidad y transparencia</h2>
+                    <h3 class="section-title">Tú decides si compartes tus datos</h3>
+                    <p>En Nuvora protegemos tu identidad. Si decides participar en nuestro programa ético de datos para investigación médica, tu información se anonimiza por completo. Es 100% opcional y tú mantienes el control de tus datos en todo momento.</p>
+                    <p class="highlight-box">Los usuarios que participen podrán acceder a una recompensa del 33% del beneficio neto generado por ese uso, según las condiciones del programa.</p>
+                    <a href="privacidad.html" class="btn btn-outline mt-md">Saber más sobre privacidad</a>
+                </div>
+                <div class="fade-in-up flex-col gap-md">
+                    <div class="glass-card">
+                        <i data-lucide="shield-check"></i>
+                        <h4>Control del usuario</h4>
+                        <p>Consentimiento informado y decisión clara sobre el uso de tus datos.</p>
+                    </div>
+                    <div class="glass-card">
+                        <i data-lucide="lock"></i>
+                        <h4>Anonimización y transparencia</h4>
+                        <p>Uso ético de la información con foco en privacidad y confianza.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ENTIDADES Y PROFESIONALES -->
+        <section id="empresas" class="section bg-soft padding-y-lg">
+            <div class="container section-split">
+                <div class="fade-in-up">
+                    <h2 class="section-label">Para entidades y profesionales</h2>
+                    <h3 class="section-title">Seguimiento terapéutico con datos más claros</h3>
+                    <p>Nuvora avanza hacia una solución para farmacias, aseguradoras y entidades sanitarias que buscan mejorar el seguimiento terapéutico, trabajar con datos estructurados y detectar señales de baja adherencia en pacientes con tratamientos complejos.</p>
+                </div>
+                <div class="fade-in-up flex-col gap-md">
+                    <div class="glass-card">
+                        <i data-lucide="network"></i>
+                        <h4>Integración clínica</h4>
+                        <p>Indicadores y alertas para mejorar el seguimiento terapéutico.</p>
+                    </div>
+                    <div class="glass-card">
+                        <i data-lucide="database"></i>
+                        <h4>Información estructurada</h4>
+                        <p>Datos más útiles para apoyar decisiones y nuevos modelos de atención.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CTA FINAL -->
+        <section class="section padding-y-lg">
+            <div class="container text-center fade-in-up final-cta-block">
+                <h2 class="section-title">Empieza antes que nadie</h2>
+                <p class="section-subtitle">Únete a la lista de espera y conoce antes que nadie el lanzamiento de Nuvora.</p>
+                <a href="contacto.html" class="btn btn-primary btn-lg">Unirme a la lista de espera</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="Nuvora Logo">
+                <p>
+                    Salud digital para pacientes crónicos, cuidadores y entidades que buscan una gestión de la medicación más clara, segura y humana.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="empresas.html">Empresas</a>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; <script>document.write(new Date().getFullYear())</script> Nuvora Health. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>

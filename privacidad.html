@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuvora | Privacidad y Recompensas</title>
+    <meta name="description" content="Conoce cómo Nuvora protege tu privacidad mediante la anonimización de datos y el programa ético de recompensas del 33% del beneficio neto.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nuvora.es/privacidad.html">
+    <meta property="og:title" content="Nuvora | Privacidad y Recompensas">
+    <meta property="og:description" content="Conoce cómo Nuvora protege tu privacidad mediante la anonimización de datos y el programa ético de recompensas del 33% del beneficio neto.">
+    <meta property="og:image" content="https://nuvora.es/assets/nuvora-hero.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://nuvora.es/privacidad.html">
+    <meta name="twitter:title" content="Nuvora | Privacidad y Recompensas">
+    <meta name="twitter:description" content="Conoce cómo Nuvora protege tu privacidad mediante la anonimización de datos y el programa ético de recompensas del 33% del beneficio neto.">
+    <meta name="twitter:image" content="https://nuvora.es/assets/nuvora-hero.png">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('nuvora-theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
+
+    <!-- Unified Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
+
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <nav>
+            <div class="container nav-container">
+                <a href="index.html" class="nav-logo" aria-label="Nuvora Inicio">
+                    <img src="assets/logo.png" alt="Nuvora Logo">
+                </a>
+    
+                <div class="nav-links">
+                    <a href="usuarios.html" class="nav-link">Usuarios</a>
+                    <a href="empresas.html" class="nav-link">Empresas</a>
+                    <a href="privacidad.html" class="nav-link active">Privacidad</a>
+                    <a href="contacto.html" class="nav-link">Contacto</a>
+                </div>
+    
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-btn" aria-label="Alternar modo oscuro/claro">
+                        <i data-lucide="moon" class="icon-moon"></i>
+                        <i data-lucide="sun" class="icon-sun"></i>
+                    </button>
+                    <a href="contacto.html" class="btn btn-primary">Únete a la lista de espera</a>
+                    <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <i data-lucide="menu" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+
+            const themeBtn = document.getElementById('theme-btn');
+            const htmlElement = document.documentElement;
+
+            themeBtn.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('nuvora-theme', newTheme);
+            });
+
+            // Mobile Menu Toggle
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggleBtn.addEventListener('click', () => {
+                const isActive = navLinks.classList.toggle('is-active');
+                menuToggleBtn.setAttribute('aria-expanded', isActive);
+                const menuIcon = document.getElementById('menu-icon');
+                if (isActive) {
+                    menuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    menuIcon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            // High Performance IntersectionObserver for animations
+            const observerOptions = { root: null, rootMargin: '0px 0px -50px 0px', threshold: 0.05 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(el => { observer.observe(el); });
+
+            // Lock card scroll animation (passive listener for minimal perf cost)
+            const lockCard = document.getElementById('privacyLockCard');
+            if (lockCard) {
+                const checkCardVisibility = () => {
+                    const rect = lockCard.getBoundingClientRect();
+                    const triggerPointStart = window.innerHeight * 0.4;
+                    const triggerPointEnd = window.innerHeight * 0.05;
+
+                    if (rect.top < triggerPointStart && rect.bottom > triggerPointEnd) {
+                        lockCard.classList.add('is-active');
+                    } else {
+                        lockCard.classList.remove('is-active');
+                    }
+                };
+
+                window.addEventListener('scroll', checkCardVisibility, { passive: true });
+                checkCardVisibility();
+            }
+        });
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HERO PRIVACIDAD -->
+        <header class="hero fade-in-up hero-subpage-xl">
+            <div class="container text-center max-w-1000">
+                <p class="section-label">Privacidad y Recompensas</p>
+                <h1 class="page-title mb-md">
+                    Tus datos. Tu decisión. <span class="text-gradient">Nuestro compromiso ético.</span>
+                </h1>
+                <p class="section-subtitle max-w-900 mb-lg">
+                    Tú decides si compartes tus datos. La participación es opcional y puedes retirarla cuando quieras. Si decides participar, tus datos se anonimizan antes de utilizarse y pueden compartirse con universidades, hospitales, centros de salud y empresas del sector sanitario para favorecer la investigación médica y la mejora de tratamientos. Como agradecimiento por tu aportación, puedes acceder a una recompensa del 33% del beneficio neto generado, según las condiciones del programa.
+                </p>
+                <div class="hero-actions">
+                    <a href="#como-funciona" class="btn btn-primary btn-lg">Entender el sistema</a>
+                    <a href="contacto.html" class="btn btn-outline btn-lg">Únete a la lista de espera</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- BLOQUE TÚ DECIDES -->
+        <section class="section padding-y-lg">
+            <div class="container section-split">
+                <div class="fade-in-up">
+                    <h2 class="section-label">Control total</h2>
+                    <h3 class="section-title">Compartir información siempre será opcional</h3>
+                    <p>En Nuvora, tu cuenta y las funcionalidades de la app operan con total normalidad aunque decidas no compartir absolutamente nada. La participación en el programa de datos es una elección activa e informada.</p>
+                    <ul class="icon-list icon-list-start">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" aria-hidden="true"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg>
+                            <p><strong>Funcionalidad completa:</strong> No pierdes acceso a la app si no participas.</p>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>
+                            <p><strong>Decisión reversible:</strong> Puedes cambiar de opinión y retirar tu consentimiento en cualquier momento.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fade-in-up">
+                    <div class="glass-card-featured privacy-lock-card" id="privacyLockCard">
+                        <div class="lock-icon-container">
+                            <i data-lucide="unlock" class="lock-icon-open"></i>
+                            <i data-lucide="lock" class="lock-icon-closed"></i>
+                        </div>
+                        <h4>Privacidad por diseño</h4>
+                        <p>El sistema está creado desde la base para separar tu identidad de tus datos de salud, protegiendo lo más importante desde el primer día.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CÓMO FUNCIONA NUESTRO COMPROMISO ÉTICO -->
+        <section id="como-funciona" class="section bg-soft padding-y-lg">
+            <div class="container text-center fade-in-up max-w-800 mb-lg">
+                <h2 class="section-title">Cómo funciona nuestro compromiso ético</h2>
+                <p>Un modelo transparente donde tú tienes el control, la privacidad está garantizada y tu colaboración se valora.</p>
+            </div>
+            <div class="container steps-grid fade-in-up">
+                <div class="step-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="hand" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"></path><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"></path><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"></path><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"></path></svg>
+                    <h4>Tú decides participar</h4>
+                    <p>La participación es 100% opcional. Puedes unirte o retirar tu consentimiento cuando quieras desde la app.</p>
+                </div>
+                <div class="step-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <h4>Tus datos se anonimizan</h4>
+                    <p>Antes de utilizarse, cualquier dato clínico se separa por completo de tu identidad personal para protegerte.</p>
+                </div>
+                <div class="step-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="microscope" aria-hidden="true"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"></path><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"></path></svg>
+                    <h4>Apoyas la investigación</h4>
+                    <p>La información anonimizada se comparte con entidades de salud para mejorar tratamientos y encontrar soluciones.</p>
+                </div>
+                <div class="step-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="gift" aria-hidden="true"><path d="M12 7v14"></path><path d="M20 11v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"></path><path d="M7.5 7a1 1 0 0 1 0-5A4.8 8 0 0 1 12 7a4.8 8 0 0 1 4.5-5 1 1 0 0 1 0 5"></path><rect x="3" y="7" width="18" height="4" rx="1"></rect></svg>
+                    <h4>Recibes tu agradecimiento</h4>
+                    <p>Como reconocimiento a tu aportación, accedes a una recompensa del 33% del beneficio neto generado.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUÉ DATOS, CÓMO Y PARA QUÉ -->
+        <section class="section padding-y-lg">
+            <div class="container fade-in-up">
+                <div class="text-center max-w-800 mb-lg">
+                    <h2 class="section-title">Qué información se utiliza</h2>
+                    <p>Evitamos el lenguaje complejo. Queremos que sepas exactamente qué ocurre con la información si decides participar.</p>
+                </div>
+                <div class="features-custom-grid">
+                    <div class="feature-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                        <h4>Datos de tratamientos</h4>
+                        <p>Información sobre eficacia de medicamentos y adherencia terapéutica, útil para descubrir mejoras en la gestión de enfermedades crónicas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-x" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14.5 12.5-5 5"></path><path d="m9.5 12.5 5 5"></path></svg>
+                        <h4>Nunca datos de identidad</h4>
+                        <p>Tu nombre, correo, teléfono y dirección física son eliminados antes de que la información sea utilizada en investigaciones.</p>
+                    </div>
+                    <div class="feature-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-2" aria-hidden="true"><path d="M5 21v-6"></path><path d="M12 21V3"></path><path d="M19 21V9"></path></svg>
+                        <h4>Finalidad científica y de salud</h4>
+                        <p>El uso se centra en entidades del ecosistema de salud: farmacéuticas, aseguradoras o institutos de investigación médica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFRAESTRUCTURA Y SEGURIDAD -->
+        <section class="section bg-soft padding-y-lg">
+            <div class="container section-split alt">
+                <div class="fade-in-up">
+                    <h2 class="section-label">Infraestructura</h2>
+                    <h3 class="section-title">Estándares de seguridad rigurosos y europeos</h3>
+                    <p>Nuestra prioridad es mantener tus datos blindados frente a amenazas externas, asegurando un entorno técnico moderno, auditable y sostenible.</p>
+                    
+                    <ul class="icon-list icon-list-compact">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="server" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect><rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect><line x1="6" x2="6.01" y1="6" y2="6"></line><line x1="6" x2="6.01" y1="18" y2="18"></line></svg>
+                            <span>Servidores ubicados en la Unión Europea.</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-alert" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+                            <span>Protección reforzada y mejora continua en ciberseguridad.</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span>Prioridad de despliegue en España (Islas Canarias).</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="leaf" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+                            <span>Preferencia por proveedores alineados con la sostenibilidad energética.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fade-in-up flex-center">
+                    <div class="gradient-frame">
+                        <div class="gradient-frame-inner">
+                            <svg class="feature-icon-xl" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                            <h4>Arquitectura segura</h4>
+                            <p>El rigor técnico como base para proteger a nuestros usuarios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRINCIPIOS ÉTICOS -->
+        <section class="section padding-y-lg">
+            <div class="container text-center fade-in-up max-w-800">
+                <h2 class="section-title">Nuestros principios</h2>
+                <p class="section-subtitle mb-lg">En Nuvora tratamos la información de salud con responsabilidad, respeto y claridad. Nuestro compromiso se basa en tres principios: un uso ético, anónimo y transparente de los datos.</p>
+                
+                <div class="card-grid card-grid-auto-200 principles-grid">
+                    <div class="principle-card">
+                        <h4>Ético</h4>
+                        <p>Solo utilizamos la información con fines legítimos, responsables y alineados con la mejora de la salud y la investigación.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>Anónimo</h4>
+                        <p>Antes de cualquier uso, los datos se separan de tu identidad personal para que no puedan vincularse contigo.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>Transparente</h4>
+                        <p>Te explicamos de forma clara qué datos se usan, para qué se usan y cómo puedes decidir en todo momento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section bg-soft padding-y-lg">
+            <div class="container fade-in-up max-w-800">
+                <h2 class="section-heading-center">Preguntas frecuentes</h2>
+                
+                <div class="faq-list">
+                    <div class="glass-card faq-card">
+                        <h4>¿Tengo que compartir mis datos para usar Nuvora?</h4>
+                        <p>No. El uso de la app para gestionar tu medicación es independiente de tu participación en el programa de datos. Es 100% opcional.</p>
+                    </div>
+                    <div class="glass-card faq-card">
+                        <h4>¿Qué ocurre si no quiero participar?</h4>
+                        <p>No ocurre nada. Podrás usar la app con normalidad, pero no accederás a las recompensas económicas derivadas del ecosistema B2B.</p>
+                    </div>
+                    <div class="glass-card faq-card">
+                        <h4>¿Qué significa que los datos se usen de forma anónima?</h4>
+                        <p>Significa que cualquier dato clínico (medicamentos, horarios) se separa por completo de tu nombre, correo o identidad, haciendo imposible rastrear la información hasta ti.</p>
+                    </div>
+                    <div class="glass-card faq-card">
+                        <h4>¿Cómo funciona la recompensa?</h4>
+                        <p>Si participas en la red de datos, tendrás derecho a recibir un 33% del beneficio neto generado, distribuido equitativamente según las condiciones establecidos.</p>
+                    </div>
+                    <div class="glass-card faq-card">
+                        <h4>¿Puedo cambiar de opinión más adelante?</h4>
+                        <p>Sí. Tendrás la opción de entrar o salir del programa de datos directamente desde los ajustes de la aplicación, en el momento que tú decidas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="section padding-y-lg">
+            <div class="container text-center fade-in-up final-cta-block">
+                <h2 class="section-title">¿Tienes más dudas?</h2>
+                <p class="cta-copy">Estamos construyendo Nuvora desde la confianza. Únete a la comunidad de forma temprana.</p>
+                <div class="hero-actions">
+                    <a href="contacto.html" class="btn btn-primary btn-lg">Unirme a la lista de espera</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="Nuvora Logo">
+                <p>
+                    Salud digital para pacientes crónicos, cuidadores y entidades que buscan una gestión de la medicación más clara, segura y humana.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Empresa</h4>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="empresas.html">Empresas</a>
+                <a href="privacidad.html">Privacidad</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="aviso-legal.html">Aviso Legal</a>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            &copy; <script>document.write(new Date().getFullYear())</script> Nuvora Health. Todos los derechos reservados.
+        </div>
+    </footer>
+
+
+</body>
+</html>
